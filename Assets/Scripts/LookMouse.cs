@@ -31,4 +31,5 @@ public class LookMouse : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         transform.position = lookAt.position + rotation * direction;   
         transform.LookAt(lookAt.position);
-    }
+    }
+}

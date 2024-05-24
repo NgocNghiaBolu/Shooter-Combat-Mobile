@@ -40,7 +40,7 @@ public class JoystickEditor : Editor
         if(handle != null)
         {
             RectTransform handleRect = (RectTransform)handle.objectReferenceValue;
-            //handleRect.anchorMax = center;
+            handleRect.anchorMax = center;
             handleRect.anchorMin = center;
             handleRect.pivot = center;
             handleRect.anchoredPosition = Vector2.zero;

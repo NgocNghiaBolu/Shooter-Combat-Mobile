@@ -64,28 +64,28 @@ AnimatorStateMachine:
     m_Position: {x: 590, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8761714347840856212}
-    m_Position: {x: 1090, y: 120, z: 0}
+    m_Position: {x: 1160, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6258472817676408268}
-    m_Position: {x: 180, y: -20, z: 0}
+    m_Position: {x: 170, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7006362042970405099}
-    m_Position: {x: 860, y: -110, z: 0}
+    m_Position: {x: 820, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2964145025640035331}
-    m_Position: {x: 1050, y: 260, z: 0}
+    m_Position: {x: 1130, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6912254573486101953}
-    m_Position: {x: 90, y: 160, z: 0}
+    m_Position: {x: 60, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7997481554214529892}
-    m_Position: {x: 100, y: 640, z: 0}
+    m_Position: {x: 80, y: 630, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5897610296830818854}
-    m_Position: {x: 100, y: 440, z: 0}
+    m_Position: {x: 50, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4307801698213170214}
-    m_Position: {x: 1050, y: 560, z: 0}
+    m_Position: {x: 1020, y: 570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1758200708139138014}
     m_Position: {x: 600, y: 500, z: 0}
@@ -94,7 +94,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 580, y: -120, z: 0}
+  m_AnyStatePosition: {x: 470, y: -140, z: 0}
   m_EntryPosition: {x: 580, y: 40, z: 0}
   m_ExitPosition: {x: 570, y: -50, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -1005,7 +1005,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Idle
+    m_ConditionEvent: Jump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2929314722510058062}
@@ -1016,7 +1016,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.8828125
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1

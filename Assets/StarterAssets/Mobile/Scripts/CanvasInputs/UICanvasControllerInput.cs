@@ -1,36 +1,38 @@
+using StarterAssets;
 using UnityEngine;
 
-namespace StarterAssets
-{
+
     public class UICanvasControllerInput : MonoBehaviour
     {
 
-        [Header("Output")]
-        public StarterAssetsInputs starterAssetsInputs;
-        public PlayerMoverment button;
+    [Header("Output")]
+    public StarterAssetsInputs starterAssetsInputs;
+    //public PlayerInputSystem inputs;
 
-        public void VirtualMoveInput(Vector2 virtualMoveDirection)
-        {
-            starterAssetsInputs.MoveInput(virtualMoveDirection);
-        }
+        //public void VirtualMoveInput(Vector2 virtualMoveDirection)
+        //{
+        //    starterAssetsInputs.MoveInput(virtualMoveDirection);
+        //}
 
-        public void VirtualLookInput(Vector2 virtualLookDirection)
-        {
-            starterAssetsInputs.LookInput(virtualLookDirection);
-        }
+    //public void VirtualLookInput(Vector2 virtualLookDirection)
+    //{
+    //    starterAssetsInputs.LookInput(virtualLookDirection);
+    //}
 
         public void VirtualJumpInput(bool virtualJumpState)
         {
-            //starterAssetsInputs.jump = virtualJumpState;
-            starterAssetsInputs.JumpInput(virtualJumpState);
-            //button.jump = virtualJumpState;
+            starterAssetsInputs.jump = virtualJumpState;
+            //starterAssetsInputs.JumpInput(virtualJumpState);
+            //inputs.jump = virtualJumpState;
         }
 
-        public void VirtualSprintInput(bool virtualSprintState)
-        {
-            starterAssetsInputs.SprintInput(virtualSprintState);
-        }
-        
+    public void VirtualRunInput(bool virtualRunState)
+    {
+        starterAssetsInputs.run = virtualRunState;
+        //starterAssetsInputs.JumpInput(virtualJumpState);
+        //inputs.jump = virtualJumpState;
     }
 
 }
+
+

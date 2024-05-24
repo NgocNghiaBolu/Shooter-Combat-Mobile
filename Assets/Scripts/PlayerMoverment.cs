@@ -37,27 +37,31 @@ public class PlayerMoverment : MonoBehaviour
     public bool mobileJoystick;
     public FixedJoystick joystick;
     public FixedJoystick Runjoystick;
-    //public UICanvasControllerInput button;
-    //UIVirtualButton bt;
 
+    private StarterAssetsInputs input;
+    //private PlayerInputSystem input;
+
+    public bool run;
     public bool jump;
 
     private void Start()
     {
+        //input = GetComponent<PlayerInputSystem>();
+        input = GetComponent<StarterAssetsInputs>();
         Cursor.lockState = CursorLockMode.Locked;//khoa con tro
     }
 
     private void Update()
     {
-        if(currentPlayerSpeed > 0)
-        {
-            Runjoystick = null;
-        }
-        else
-        {
-            FixedJoystick runJS = GameObject.Find("RunJoystick").GetComponent<FixedJoystick>();
-            Runjoystick = runJS;
-        }
+        //if(currentPlayerSpeed > 0)
+        //{
+        //    Runjoystick = null;
+        //}
+        //else
+        //{
+        //    FixedJoystick runJS = GameObject.Find("RunJoystick").GetComponent<FixedJoystick>();
+        //    Runjoystick = runJS;
+        //}
 
         OnSurface = Physics.CheckSphere(checkSurface.position, surfacedistanc, surfaceMask);
 
@@ -78,42 +82,41 @@ public class PlayerMoverment : MonoBehaviour
 
     void PlayerMove()
     {
-        if (mobileJoystick == true)
-        {
-            float horizontalAxis = joystick.Horizontal;//khai bao cac phuong huong di
-            float verticalAxis = joystick.Vertical;
+        //if (mobileJoystick == true)
+        //{
+        //    float horizontalAxis = joystick.Horizontal;//khai bao cac phuong huong di
+        //    float verticalAxis = joystick.Vertical;
 
-            Vector3 direction = new Vector3(horizontalAxis, 0f, verticalAxis).normalized;//cho cac phuong vao bien direc
+        //    Vector3 direction = new Vector3(horizontalAxis, 0f, verticalAxis).normalized;//cho cac phuong vao bien direc
 
-            if (direction.magnitude >= 0.1f)//neu do lon va huong di >= 0.1
-            {
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walk", true);
-                animator.SetBool("IdleAim", false);
-                animator.SetBool("WalkAim", false);
-                animator.SetBool("Run", false);
-                animator.SetTrigger("Jump");
+        //    if (direction.magnitude >= 0.1f)//neu do lon va huong di >= 0.1
+        //    {
+        //        animator.SetBool("Idle", false);
+        //        animator.SetBool("Walk", true);
+        //        animator.SetBool("IdleAim", false);
+        //        animator.SetBool("WalkAim", false);
+        //        animator.SetBool("Run", false);
+        //        animator.SetTrigger("Jump");
 
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPlayer.eulerAngles.y;//xoay theo huong chon
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnCalmVelocity, turnCalmTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        //        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPlayer.eulerAngles.y;//xoay theo huong chon
+        //        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnCalmVelocity, turnCalmTime);
+        //        transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                characControl.Move(moveDirection.normalized * playerSpeed * Time.deltaTime);//cho dchuyen 
-                currentPlayerSpeed = playerSpeed;
-            }
-            else
-            {
-                animator.SetBool("Idle", true);
-                animator.SetBool("Walk", false);
-                animator.SetBool("Run", false);
-                animator.SetBool("WalkAim", false);
-                animator.SetTrigger("Jump");
-                currentPlayerSpeed = 0f;
-            }
-        }
-        else
-        {
+        //        Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        //        characControl.Move(moveDirection.normalized * playerSpeed * Time.deltaTime);//cho dchuyen 
+        //        currentPlayerSpeed = playerSpeed;
+        //    }
+        //    else
+        //    {
+        //        animator.SetBool("Idle", true);
+        //        animator.SetBool("Walk", false);
+        //        animator.SetBool("Run", false);
+        //        animator.SetBool("WalkAim", false);
+        //        animator.SetTrigger("Jump");
+        //        currentPlayerSpeed = 0f;
+        //    }
+        //}
+       
             float horizontalAxis = Input.GetAxisRaw("Horizontal");//khai bao cac phuong huong di
             float verticalAxis = Input.GetAxisRaw("Vertical");
 
@@ -145,41 +148,44 @@ public class PlayerMoverment : MonoBehaviour
                 animator.SetTrigger("Jump");
                 currentPlayerSpeed = 0f;
             }
-        }
     }
 
     void PlayerRun()
     {
-        if (mobileJoystick == true)
-        {
-            float horizontalAxis = Runjoystick.Horizontal; //khai bao cac phuong huong di
-            float verticalAxis = Runjoystick.Vertical;
+        //if (mobileJoystick == true )
+        //{
+        //        float horizontalAxis = Input.GetAxisRaw("Horizontal");//khai bao cac phuong huong di
+        //        float verticalAxis = Input.GetAxisRaw("Vertical");
+        //        //float horizontalAxis = Runjoystick.Horizontal;
+        //        //float verticalAxis = Runjoystick.Vertical;
 
-            Vector3 direction = new Vector3(horizontalAxis, 0f, verticalAxis).normalized;//cho cac phuong vao bien direc
+        //        Vector3 direction = new Vector3(horizontalAxis, 0f, verticalAxis).normalized;//cho cac phuong vao bien direc
 
-            if (direction.magnitude >= 0.1f)//neu do lon va huong di >= 0.1
-            {
-                animator.SetBool("Run", true);
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walk", false);
-                animator.SetBool("IdleAim", false);
+        //        if (direction.magnitude >= 0.1f)//neu do lon va huong di >= 0.1
+        //        {
+        //            animator.SetBool("Run", true);
+        //            animator.SetBool("Idle", false);
+        //            animator.SetBool("Walk", false);
+        //            animator.SetBool("IdleAim", false);
 
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPlayer.eulerAngles.y;//xoay theo huong chon
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnCalmVelocity, turnCalmTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        //            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + CameraPlayer.eulerAngles.y;//xoay theo huong chon
+        //            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnCalmVelocity, turnCalmTime);
+        //            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                characControl.Move(moveDirection.normalized * playerRun * Time.deltaTime);//cho dchuyen 
-                currentPlayerRun = playerRun;
-            }
-            else
-            {
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walk", false);
-                currentPlayerRun = 0f;
-            }
-        }
-        else
+        //            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        //            characControl.Move(moveDirection.normalized * playerRun * Time.deltaTime);//cho dchuyen 
+        //            currentPlayerRun = playerRun;
+        //        }
+        //        else
+        //        {
+        //            animator.SetBool("Idle", false);
+        //            animator.SetBool("Walk", false);
+        //            currentPlayerRun = 0f;
+        //        }
+        //}
+        //else
+        //{
+        if(Input.GetButton("Run") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && OnSurface) 
         {
             float horizontalAxis = Input.GetAxisRaw("Horizontal");//khai bao cac phuong huong di
             float verticalAxis = Input.GetAxisRaw("Vertical");
@@ -207,13 +213,28 @@ public class PlayerMoverment : MonoBehaviour
                 animator.SetBool("Walk", false);
                 currentPlayerRun = 0f;
             }
+            //}
         }
     }
 
     void Jump()
     {
-             
-        if (Input.GetButtonDown("Jump") && OnSurface)
+        //if(mobileJoystick == true)
+        //{
+        //    if (input.jump && OnSurface)
+        //    {
+        //        animator.SetBool("Walk", false);
+        //        animator.SetTrigger("Jump");
+        //        velocity.y = Mathf.Sqrt(jumpRange * -2 * gravity);
+        //    }
+        //    else
+        //    {
+        //        animator.ResetTrigger("Jump");
+        //    }
+        //}
+        //else 
+        //{
+            if (Input.GetButtonDown("Jump") && OnSurface)
             {
                 animator.SetBool("Walk", false);
                 animator.SetTrigger("Jump");
@@ -223,6 +244,7 @@ public class PlayerMoverment : MonoBehaviour
             {
                 animator.ResetTrigger("Jump");
             }
-        
-    }
+        }
+    //}
+
 }

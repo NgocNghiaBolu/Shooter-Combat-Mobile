@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("Player Health and Damage")]
     public float playerHealth = 100f;
-    public float presentHealth = 100f;
+    public float presentHealth;
     public HealthBar healthBar;
 
     private void Start()

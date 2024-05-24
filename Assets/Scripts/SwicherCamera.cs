@@ -9,7 +9,7 @@ public class SwicherCamera : MonoBehaviour
     public GameObject AimCam;
     public GameObject TPCam;
     public GameObject TPCanvas;// khong ngam
-    public PlayerMoverment player;
+    //public PlayerMoverment player;
 
     [Header("Camera Animator")]
     public Animator animator;
